@@ -1,0 +1,24 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "tarefa": {
+      "home": {
+        "title": "Tarefas",
+        "createLabel": "Criar novo Tarefa",
+        "createOrEditLabel": "Criar ou editar Tarefa",
+        "notFound": "Nenhum Tarefa encontrado"
+      },
+      "created": "Um novo Tarefa foi criado com o identificador {{ param }}",
+      "updated": "Um Tarefa foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Tarefa foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Tarefa {{ id }}?"
+      },
+      "detail": {
+        "title": "Tarefa"
+      },
+      "titulo": "Titulo",
+      "descricao": "Descricao",
+      "trabalho": "Trabalho"
+    }
+  }
+}

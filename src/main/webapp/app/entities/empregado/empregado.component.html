@@ -1,0 +1,85 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="jhipsterSampleApplicationApp.empregado.home.title">Empregados</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-empregado" [routerLink]="['/empregado/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="jhipsterSampleApplicationApp.empregado.home.createLabel">
+            Create a new Empregado
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="empregados?.length === 0">
+        <span jhiTranslate="jhipsterSampleApplicationApp.empregado.home.notFound">No empregados found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="empregados && empregados.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="reset.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="primeiroNome"><span jhiTranslate="jhipsterSampleApplicationApp.empregado.primeiroNome">Primeiro Nome</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="sobrenome"><span jhiTranslate="jhipsterSampleApplicationApp.empregado.sobrenome">Sobrenome</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="email"><span jhiTranslate="jhipsterSampleApplicationApp.empregado.email">Email</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="telefone"><span jhiTranslate="jhipsterSampleApplicationApp.empregado.telefone">Telefone</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="dataContratacao"><span jhiTranslate="jhipsterSampleApplicationApp.empregado.dataContratacao">Data Contratacao</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="salario"><span jhiTranslate="jhipsterSampleApplicationApp.empregado.salario">Salario</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="comissao"><span jhiTranslate="jhipsterSampleApplicationApp.empregado.comissao">Comissao</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="gerente.id"><span jhiTranslate="jhipsterSampleApplicationApp.empregado.gerente">Gerente</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="departamento.id"><span jhiTranslate="jhipsterSampleApplicationApp.empregado.departamento">Departamento</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+                <tr *ngFor="let empregado of empregados ;trackBy: trackId">
+                    <td><a [routerLink]="['/empregado', empregado.id, 'view']">{{ empregado.id }}</a></td>
+                    <td>{{ empregado.primeiroNome }}</td>
+                    <td>{{ empregado.sobrenome }}</td>
+                    <td>{{ empregado.email }}</td>
+                    <td>{{ empregado.telefone }}</td>
+                    <td>{{ empregado.dataContratacao | date:'medium' }}</td>
+                    <td>{{ empregado.salario }}</td>
+                    <td>{{ empregado.comissao }}</td>
+                    <td>
+                        <div *ngIf="empregado.gerente">
+                            <a [routerLink]="['/empregado', empregado.gerente?.id, 'view']" >{{ empregado.gerente?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="empregado.departamento">
+                            <a [routerLink]="['/departamento', empregado.departamento?.id, 'view']" >{{ empregado.departamento?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/empregado', empregado.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/empregado', empregado.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(empregado)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
