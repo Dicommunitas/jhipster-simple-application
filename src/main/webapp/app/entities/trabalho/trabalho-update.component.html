@@ -40,7 +40,7 @@
                     <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.trabalho.empregado" for="field_empregado">Empregado</label>
                     <select class="form-control" id="field_empregado" name="empregado" formControlName="empregado">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="empregadoOption.id === editForm.get('empregado')!.value?.id ? editForm.get('empregado')!.value : empregadoOption" *ngFor="let empregadoOption of empregados; trackBy: trackById">{{ empregadoOption.id }}</option>
+                        <option [ngValue]="empregadoOption.id === editForm.get('empregado')!.value?.id ? editForm.get('empregado')!.value : empregadoOption" *ngFor="let empregadoOption of empregados; trackBy: trackById">{{ empregadoOption.primeiroNome }}</option>
                     </select>
                 </div>
             </div>
