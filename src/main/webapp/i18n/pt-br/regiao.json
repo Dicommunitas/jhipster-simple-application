@@ -2,19 +2,19 @@
   "jhipsterSampleApplicationApp": {
     "regiao": {
       "home": {
-        "title": "Regiaos",
-        "createLabel": "Criar novo Regiao",
-        "createOrEditLabel": "Criar ou editar Regiao",
-        "notFound": "Nenhum Regiao encontrado"
+        "title": "Regiões",
+        "createLabel": "Criar nova Região",
+        "createOrEditLabel": "Criar ou editar Região",
+        "notFound": "Nenhuma Região encontrada"
       },
-      "created": "Um novo Regiao foi criado com o identificador {{ param }}",
-      "updated": "Um Regiao foi atualizado com o identificador {{ param }}",
-      "deleted": "Um Regiao foi excluído com o identificador {{ param }}",
+      "created": "Uma nova Região foi criada com o identificador {{ param }}",
+      "updated": "Uma Região foi atualizada com o identificador {{ param }}",
+      "deleted": "Uma Região foi excluída com o identificador {{ param }}",
       "delete": {
-        "question": "Tem certeza de que deseja excluir Regiao {{ id }}?"
+        "question": "Tem certeza de que deseja excluir Região {{ id }}?"
       },
       "detail": {
-        "title": "Regiao"
+        "title": "Região"
       },
       "nome": "Nome"
     }
